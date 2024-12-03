@@ -1,24 +1,3 @@
-name: Labeler
 
-on: [pull_request,workflow_dispatch]
-  
-
-jobs:
-  label:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/labeler@v5
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        sync-labels: true
-        #configuration-path: .github/workflows/labeler.yml
-        dot: true
-        pr-number: |
-          1
-          2
-          3
-          4
-          5
           6
           

@@ -12,5 +12,13 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         sync-labels: true
-        configuration-path: .github/workflows/label.yml
+        configuration-path: .github/workflows/labeler.yml
         dot: true
+        pr-number: |
+          1
+          2
+          3
+          4
+          5
+          6
+              

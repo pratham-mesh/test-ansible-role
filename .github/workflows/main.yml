@@ -1,4 +1,5 @@
 name: Initial Workflow
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
   push:
     branches: 

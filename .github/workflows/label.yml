@@ -1,13 +1,7 @@
 name: Labeler
 
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-  workflow_dispatch:
-
+on: [pull_request,workflow_dispatch]
+  
 
 jobs:
   label:

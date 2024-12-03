@@ -12,5 +12,5 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         sync-labels: true
-        configuration-path: .github/label.yml
+        configuration-path: .github/workflows/label.yml
         dot: true

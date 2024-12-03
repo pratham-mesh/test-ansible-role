@@ -14,3 +14,11 @@ jobs:
         sync-labels: true
         configuration-path: .github/workflows/label.yml
         dot: true
+        pr-number: |
+          1
+          2
+          3
+          4
+          5
+          6
+          

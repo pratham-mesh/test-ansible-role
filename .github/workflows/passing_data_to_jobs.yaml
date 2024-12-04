@@ -10,7 +10,7 @@ jobs:
       - name: Generate File
         run: echo "Hello, CloudEthix Team!" > hello.txt
       - name: Upload File
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: my-artifact
           path: hello.txt
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download File
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: my-artifact
       - name: Use File

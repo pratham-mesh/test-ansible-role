@@ -21,7 +21,14 @@ jobs:
         #npm run test
         echo "Test cases Executed"
        shell: bash
-
+    
+      
+     - name: Version  
+       id: version  
+       uses: juliansangillo/tag-version@v1  
+       with:  
+        production-branch: master    
+        
   end:
     runs-on: ubuntu-latest
     steps: 

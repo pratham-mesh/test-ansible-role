@@ -25,11 +25,11 @@ jobs:
        shell: bash
     
       
-     - name: Version  
-       id: version  
-       uses: juliansangillo/tag-version@v1  
-       with:  
-        production-branch: master    
+     #- name: Version  
+      # id: version  
+      # uses: juliansangillo/tag-version@v1  
+      # with:  
+      #  production-branch: master    
         
   end:
     runs-on: ubuntu-latest

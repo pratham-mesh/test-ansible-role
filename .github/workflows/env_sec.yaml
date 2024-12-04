@@ -1,6 +1,13 @@
 name: Secrets and Environment Variables
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: 
+      - Initial Workflow
+    types:
+      - completed
+
 
 jobs:
   top-secret:

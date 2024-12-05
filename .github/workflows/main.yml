@@ -39,5 +39,14 @@ jobs:
      - name: end
        run: echo "End Initial Workflow"
        shell: bash
+
+  label:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Set up Labeler
+       uses: actions/labeler@v4
+       with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: .github/labeler.yml
     
   

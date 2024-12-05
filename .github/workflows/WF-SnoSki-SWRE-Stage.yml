@@ -1,0 +1,15 @@
+name: WF-SnoSki-SWRE-Stage
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version from ACI workflow'
+        required: true
+        default: 'latest'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print version from ACI workflow
+        run: echo "The version passed from ACI is: ${{ github.event.inputs.version }}"

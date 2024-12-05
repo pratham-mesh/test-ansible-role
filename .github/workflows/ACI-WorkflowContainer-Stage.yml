@@ -29,3 +29,14 @@ jobs:
           gh workflow run WF-SnoSki-SWRE-Stage.yml \
             --ref main \
             -f sdk_version=${{ needs.extract-version.outputs.sdk_version }}
+  version-logic:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Extract SDK version
+       id: extract
+       run: |
+        sdk_version=$(cat version.txt | grep -oP 'SDK_\d+\.\d+\.\d+')
+        echo "sdk_version=$sdk_version" >> $GITHUB_ENV
+    outputs:
+     sdk_version: ${{ steps.extract.outputs.sdk_version }}
+        

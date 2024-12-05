@@ -40,5 +40,24 @@ jobs:
         echo "wf_version=$wf_version" >> $GITHUB_ENV
    outputs:
      wf_version: ${{ steps.define-wf.outputs.wf_version }}
-      
+
+  integration-in-workflow:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Combine Versions
+       id: combine
+       run: |
+        combined_version="${{ env.wf_version }}_${{ github.event.inputs.sdk_version }}"
+        echo "combined_version=$combined_version" >> $GITHUB_ENV
+    outputs:
+     combined_version: ${{ steps.combine.outputs.combined_version }}
+
+  versioncombining:
+     runs-on: ubuntu-latest
+     steps:
+     - name: Update Pull Request Title
+       run: |
+        PR_NUMBER=$(gh pr list --state open --head $GITHUB_HEAD_REF --json number --jq '.[0].number')
+        gh pr edit $PR_NUMBER --title "WF-SnoSki-SWRE-Stage_${{ env.combined_version }}"
+
           

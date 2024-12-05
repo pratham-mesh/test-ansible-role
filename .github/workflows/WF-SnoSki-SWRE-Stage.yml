@@ -27,8 +27,8 @@ jobs:
 
       - name: Update Pull Request Title
         run: |
-          PR_NUMBER=$(gh pr list --state open --head $GITHUB_HEAD_REF --json number --jq '.[0].number')
-          gh pr edit $PR_NUMBER --title "WF-SnoSki-SWRE-Stage_${{ env.combined_version }}"
+          PR_NUMBER=$(gh pr list --state open --head "$GITHUB_HEAD_REF" --json number --jq '.[0].number')
+          gh pr edit "$PR_NUMBER" --title "WF-SnoSki-SWRE-Stage_${{ env.combined_version }}"
 
   version-logic:
    runs-on: ubuntu-latest

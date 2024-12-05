@@ -1,4 +1,4 @@
-name: Label issues
+name: WF-SnoSki-HWRE-Stage
 on:
   issues:
     types:

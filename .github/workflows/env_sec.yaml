@@ -2,17 +2,17 @@ name: Secrets and Environment Variables
 
 on:
   workflow_dispatch:
-  pull_request:
-    types: [opened, closed]
-    branches:
-      - 'main/**'
-    paths:
-      - 'main.yaml'
-  #workflow_run:
-   # workflows: 
-    #  - Initial Workflow
-    #types:
-     # - completed
+  #pull_request:
+   # types: [opened, closed]
+    #branches:
+     # - 'main/**'
+    #paths:
+     # - 'main.yaml'
+  workflow_run:
+   workflows: 
+      - ACI-WorkflowContainer-Stage
+   types:
+     - completed
 
 
 jobs:

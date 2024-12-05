@@ -12,6 +12,8 @@ on:
   pull_request:
     types: closed
   workflow_dispatch:
+permissions:
+  pull-requests: write  
 
 jobs:
   run_test_cases:

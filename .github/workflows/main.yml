@@ -5,11 +5,12 @@
 name: ACI-WorkflowContainer-Stage
 run-name: Deploy to Stage by @${{ github.actor }}
 on:
+
   #push:
    # branches: 
     # - dev
   pull_request:
-    types: [opened, closed]
+    types: closed
   workflow_dispatch:
 
 jobs:

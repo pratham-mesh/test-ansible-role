@@ -6,11 +6,13 @@ on:
     types: [opened, closed]
     branches:
       - 'main/**'
-  workflow_run:
-    workflows: 
-      - Initial Workflow
-    types:
-      - completed
+    paths:
+      - 'main.yaml'
+  #workflow_run:
+   # workflows: 
+    #  - Initial Workflow
+    #types:
+     # - completed
 
 
 jobs:

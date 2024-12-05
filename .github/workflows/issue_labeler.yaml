@@ -21,10 +21,15 @@
 name: WF-SnoSki-HWRE-Stage
 on:
   workflow_dispatch: 
-  pull_request:
-    types:
+  #pull_request:
+    #types:
       # - opened
-      - closed
+      #- closed
+  workflow_run:
+   workflows: 
+      - ACI-WorkflowContainer-Stage
+   types:
+     - completed    
 jobs:
   label_pr:
     runs-on: ubuntu-latest

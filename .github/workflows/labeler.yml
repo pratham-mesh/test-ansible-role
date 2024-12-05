@@ -16,7 +16,7 @@ jobs:
          repository: ${{ github.repository }}
 
       - name: Set up Labeler
-        uses: github-actions/labeler@v4
+        uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           config-file: .github/labeler.yml

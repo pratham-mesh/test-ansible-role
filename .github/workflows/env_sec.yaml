@@ -29,7 +29,7 @@ jobs:
         run: echo "My Github repo is called ${{ github.repository }}"
 
       - name: Read an env variable
-        run: echo "My APP_ID value is ${{ env.APP_ID }} can also be accessed as $MY_APP_ID"
+        run: echo "My APP_ID value is ${{ env.MY_APP_ID }} can also be accessed as $MY_APP_ID"
         
   top-secret-DEV:
     runs-on: ubuntu-latest

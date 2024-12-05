@@ -2,6 +2,10 @@ name: Secrets and Environment Variables
 
 on:
   workflow_dispatch:
+  pull_request:
+    types: [opened, closed]
+    branches:
+      - 'main/**'
   workflow_run:
     workflows: 
       - Initial Workflow

@@ -1,8 +1,9 @@
 name: Label PR's
 on:
-  pull_request:
-    types:
-      - closed
+  workflow_dispatch:
+  #pull_request:
+   # types:
+    #  - closed
 jobs:
   label_PRs :
     runs-on: ubuntu-latest

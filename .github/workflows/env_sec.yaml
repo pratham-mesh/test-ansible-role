@@ -34,8 +34,8 @@ jobs:
   top-secret-DEV:
     runs-on: ubuntu-latest
     environment: DEV
-    env:
-      APP_ID: ${{ vars.APP_ID }}
+    #env:
+     # APP_ID: ${{ vars.APP_ID }}
 
     steps:
       - name: Read a variable for DEV environment

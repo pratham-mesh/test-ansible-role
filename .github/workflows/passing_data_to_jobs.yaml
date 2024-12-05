@@ -1,0 +1,27 @@
+name: Passing data to other workflows
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  Job-1_Creating_a_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate File
+        run: echo "Hello, CloudEthix Team!" > hello.txt
+      - name: Upload File
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: hello.txt
+
+  Job-2-Downloading_a_file:
+    needs: Job-1_Creating_a_file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download File
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: Use File
+        run: cat hello.txt

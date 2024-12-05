@@ -1,6 +1,8 @@
 #v1
-
 name: Initial Workflow
+
+name: ACI-WorkflowContainer-Stage
+run-name: Deploy to Stage by @${{ github.actor }}
 on:
   push:
     branches: 
@@ -12,7 +14,7 @@ on:
 
 jobs:
   run_test_cases:
-   runs-on: self-hosted
+   runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v2
      - name: Run Test Cases
@@ -22,7 +24,14 @@ jobs:
         #npm run test
         echo "Test cases Executed"
        shell: bash
-
+    
+      
+     #- name: Version  
+      # id: version  
+      # uses: juliansangillo/tag-version@v1  
+      # with:  
+      #  production-branch: master    
+        
   end:
     runs-on: ubuntu-latest
     steps: 

@@ -31,14 +31,14 @@ jobs:
           gh pr edit $PR_NUMBER --title "WF-SnoSki-SWRE-Stage_${{ env.combined_version }}"
 
   version-logic:
-  runs-on: ubuntu-latest
-    steps:
+   runs-on: ubuntu-latest
+   steps:
      - name: Define WF version
        id: define-wf
        run: |
         wf_version="WF_2.1.4" # Replace with logic for dynamic versioning
         echo "wf_version=$wf_version" >> $GITHUB_ENV
-       outputs:
-       wf_version: ${{ steps.define-wf.outputs.wf_version }}
+   outputs:
+     wf_version: ${{ steps.define-wf.outputs.wf_version }}
       
           

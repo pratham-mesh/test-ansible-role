@@ -5,6 +5,8 @@ on:
       sdk_version:
         description: "SDK version from previous workflow"
         required: true
+env:
+    GH_TOKEN: ${{ github.token }}        
 
 jobs:
   process-versions:

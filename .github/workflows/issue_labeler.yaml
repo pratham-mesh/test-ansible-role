@@ -1,0 +1,41 @@
+#name: WF-SnoSki-HWRE-Stage
+#on:
+ # issues:
+  #  types:
+      # - reopened
+   #   - opened
+#jobs:
+ # label_issues:
+  #  runs-on: ubuntu-latest
+   # permissions:
+    #  issues: write
+    #steps:
+    #  - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+    #    env:
+     #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    GH_REPO: ${{ github.repository }}
+      #    NUMBER: ${{ github.event.issue.number }}
+      #    LABELS: WF_2.1.4
+
+          
+name: WF-SnoSki-HWRE-Stage
+on:
+  workflow_dispatch: 
+  pull_request:
+    types:
+      # - opened
+      - closed
+jobs:
+  label_pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - run: gh pr edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.pull_request.number }}
+          LABELS: WF_2.1.4

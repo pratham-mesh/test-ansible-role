@@ -1,0 +1,48 @@
+name: Secrets and Environment Variables
+
+on:
+  workflow_dispatch:
+  #pull_request:
+   # types: [opened, closed]
+    #branches:
+     # - 'main/**'
+    #paths:
+     # - 'main.yaml'
+  workflow_run:
+   workflows: 
+      - ACI-WorkflowContainer-Stage
+   types:
+     - completed
+
+
+jobs:
+  top-secret:
+    runs-on: ubuntu-latest
+    env:
+      MY_APP_ID: ${{ vars.APP_ID }}
+
+    steps:
+      - name: Read a variable
+        run: echo "My APP_ID value is ${{ vars.APP_ID }}"
+
+      - name: Docker Password (DONT SHARE PASSWORDS)
+        run: echo "My existing secret is ${{ secrets.DOCKER_PASSWORD }}"
+
+      - name: Non-existing secret
+        run: echo "My Non-existing password is ${{ secrets.DOES_NOT_EXIST }}"
+
+      - name: Name of GITHUB Repo
+        run: echo "My Github repo is called ${{ github.repository }}"
+
+      - name: Read an env variable
+        run: echo "My APP_ID value is ${{ env.MY_APP_ID }} can also be accessed as $MY_APP_ID"
+        
+  top-secret-DEV:
+    runs-on: ubuntu-latest
+    environment: DEV
+    env:
+     APP_ID: ${{ vars.APP_ID }}
+
+    steps:
+      - name: Read a variable for DEV environment
+        run: echo "My APP_ID value in the DEV job is $APP_ID"

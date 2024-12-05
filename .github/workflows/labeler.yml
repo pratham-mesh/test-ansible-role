@@ -1,0 +1,20 @@
+name: PR Labeler
+
+on:
+  pull_request:
+    types:
+      - closed
+      
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Labeler
+        uses: github-actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: .github/labeler.yml

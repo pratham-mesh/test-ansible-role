@@ -1,0 +1,19 @@
+name: Label PR's
+on:
+  workflow_dispatch:
+  #pull_request:
+   # types:
+    #  - closed
+jobs:
+  label_PRs :
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    permissions:
+      pull-requests: write
+    steps:
+      - run: gh pr edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.pullrequests.number }}
+          LABELS: SDK_1.2.5 

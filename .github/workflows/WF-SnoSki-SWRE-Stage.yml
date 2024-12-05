@@ -1,0 +1,60 @@
+name: WF-SnoSki-SWRE-Stage
+on:
+  workflow_dispatch:
+    inputs:
+      sdk_version:
+        description: "SDK version from previous workflow"
+        required: true
+env:
+    GH_TOKEN: ${{ github.token }}        
+
+jobs:
+  process-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Define WF version
+        id: define-wf-version
+        run: echo "wf_version=WF_2.1.4" >> $GITHUB_ENV # Replace with actual logic
+        env:
+          wf_version: WF_2.1.4
+
+      - name: Combine Versions
+        id: combine-versions
+        run: |
+          combined_version="${{ env.wf_version }}_${{ github.event.inputs.sdk_version }}"
+          echo "combined_version=$combined_version" >> $GITHUB_ENV
+
+      - name: Update Pull Request Title
+        run: |
+         PR_NUMBER=$(gh pr list --state open --head $GITHUB_HEAD_REF --json number --jq '.[0].number')
+         gh pr edit $PR_NUMBER --title "WF-SnoSki-SWRE-Stage_${{ env.combined_version }}"
+
+  version-logic:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Define WF version
+       id: define-wf
+       run: |
+        wf_version="WF_2.1.4" # Replace with logic for dynamic versioning
+        echo "wf_version=$wf_version" >> $GITHUB_ENV
+   outputs:
+     wf_version: ${{ steps.define-wf.outputs.wf_version }}
+
+  integration-in-workflow:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Combine Versions
+       id: combine
+       run: |
+        combined_version="${{ env.wf_version }}_${{ github.event.inputs.sdk_version }}"
+        echo "combined_version=$combined_version" >> $GITHUB_ENV
+    outputs:
+     combined_version: ${{ steps.combine.outputs.combined_version }}
+
+ 
+     
+
+          

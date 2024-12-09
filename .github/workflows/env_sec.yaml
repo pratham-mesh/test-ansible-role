@@ -33,6 +33,9 @@ jobs:
       - name: Docker Password (DONT SHARE PASSWORDS)
         run: echo "My existing secret is ${{ secrets.DOCKER_PASSWORD }}"
 
+      - name: Echo Github Context
+        run: echo ${{GITHUB_CONTEXT}}
+
       - name: Non-existing secret
         run: echo "My Non-existing password is ${{ secrets.DOES_NOT_EXIST }}"
 

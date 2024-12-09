@@ -22,8 +22,13 @@ jobs:
       MY_APP_ID: ${{ vars.APP_ID }}
 
     steps:
+
+      - name: Read a variable
+        run: env
+        
       - name: Read a variable
         run: echo "My APP_ID value is ${{ vars.APP_ID }}"
+        
 
       - name: Docker Password (DONT SHARE PASSWORDS)
         run: echo "My existing secret is ${{ secrets.DOCKER_PASSWORD }}"

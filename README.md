@@ -30,6 +30,8 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
+https://github.com/pratham-mesh/test-ansible-role/blob/master/.github/workflows/main.yml/badge.svg
+
 BSD
 
 Author Information
